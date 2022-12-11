@@ -1,7 +1,7 @@
-package main.java.processes;
+package processes;
 
-import main.java.actions.Action;
-import main.java.pages.HomePage;
+import actions.Action;
+import pages.HomePage;
 import org.openqa.selenium.WebDriver;
 
 public class HomePageProcess extends Action {

@@ -1,7 +1,7 @@
-package main.java.processes;
+package processes;
 
-import main.java.actions.Action;
-import main.java.pages.ShopPage;
+import actions.Action;
+import pages.ShopPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

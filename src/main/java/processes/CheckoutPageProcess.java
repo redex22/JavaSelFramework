@@ -1,8 +1,7 @@
-package main.java.processes;
+package processes;
 
-import main.java.actions.Action;
-import main.java.pages.CheckoutPage;
-import main.java.pages.HomePage;
+import actions.Action;
+import pages.CheckoutPage;
 import org.openqa.selenium.WebDriver;
 
 public class CheckoutPageProcess extends Action {

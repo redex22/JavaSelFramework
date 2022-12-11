@@ -1,14 +1,15 @@
 package cases;
 
-import main.java.base.Base;
-import main.java.pages.HomePage;
-import main.java.processes.HomePageProcess;
+import com.codoid.products.exception.FilloException;
+import base.Base;
+import pages.HomePage;
+import processes.HomePageProcess;
+import utilities.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import java.io.IOException;
@@ -18,51 +19,63 @@ public class HomePageTest extends Base {
 
     public WebDriver driver;
     private Logger log = LogManager.getLogger(HomePage.class.getName());
+    private HashMap<String, String> data;
 
     @BeforeMethod
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, FilloException {
         driver = initializeDriver();
         log.debug("Driver is initialized.");
+        data = new Utils().getTestData("TC01");
     }
 
     @Test
     public void fillSendForm() {
         HomePageProcess homePage = new HomePageProcess(driver);
-        this.navigateTo(prop.getProperty("url"));
+        this.navigateTo(prop.getProperty("urlHome"));
 
-        homePage.sendNameKeys("Gonza");
+        log.info("Step 1: Write the name, email and password data in the respective boxes");
+        homePage.sendNameKeys(data.get("Name"));
         log.debug("Name sent");
-        homePage.sendEmailKeys("gon@gmail.com");
+        homePage.sendEmailKeys(data.get("Email"));
         log.debug("Email sent");
-        homePage.sendPassKeys("1234");
+        homePage.sendPassKeys(data.get("Password"));
         log.debug("Password sent");
+        log.info("Step 2: Select the Ice Cream, Gender and Employed options");
         homePage.clickIceCreamBox();
         log.debug("Ice Cream box checked");
-        homePage.selectInGenderBox("Male");
+        homePage.selectInGenderBox(data.get("Gender"));
         log.debug("Gender selected");
         homePage.clickEmployedButton();
         log.debug("Employed button clicked");
+        log.info("Step 3: Submit the form");
         homePage.clickOnSubmit();
-        Assert.assertTrue(homePage.getAlertAfterSubmission().contains("Success!"));
+        Assert.assertTrue(homePage.getAlertAfterSubmission().contains("Succes!"));
         log.info("Successfully submission");
 
     }
+    @Test
+    public void fillSendForm2() {
+        HomePageProcess homePage = new HomePageProcess(driver);
+        this.navigateTo(prop.getProperty("urlHome"));
 
-    @DataProvider
-    public Object[][] getData() {
-        // Each row is set of test data for a test case
-        // Each column is a value in a set of test data
-        Object[][] data = new Object[2][2];
-
-        // First set of test data
-        data[0][0] = "John Doe";
-        data[0][1] = "ThisIsNotAPassword";
-
-        // Second set of test data
-        data[1][0] = "testuser2";
-        data[1][1] = "testpwd2";
-
-        return data;
+        log.info("Step 1: Write the name, email and password data in the respective boxes");
+        homePage.sendNameKeys(data.get("Name"));
+        log.debug("Name sent");
+        homePage.sendEmailKeys(data.get("Email"));
+        log.debug("Email sent");
+        homePage.sendPassKeys(data.get("Password"));
+        log.debug("Password sent");
+        log.info("Step 2: Select the Ice Cream, Gender and Employed options");
+        homePage.clickIceCreamBox();
+        log.debug("Ice Cream box checked");
+        homePage.selectInGenderBox(data.get("Gender"));
+        log.debug("Gender selected");
+        homePage.clickEmployedButton();
+        log.debug("Employed button clicked");
+        log.info("Step 3: Submit the form");
+        homePage.clickOnSubmit();
+        Assert.assertTrue(homePage.getAlertAfterSubmission().contains("Success!"));
+        log.info("Successfully submission");
     }
 
     @AfterTest
