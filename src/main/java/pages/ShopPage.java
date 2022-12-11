@@ -24,10 +24,6 @@ public class ShopPage {
 
     public ShopPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        if (!driver.getTitle().equals("ProtoCommerce")) {
-            throw new IllegalStateException("This is not the Shop Page\n" +
-                    "Current page is: " + driver.getCurrentUrl());
-        }
     }
 
     public List<WebElement> getCardBoxes() {

@@ -46,10 +46,6 @@ public class HomePage{
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        if (!driver.getTitle().equals("ProtoCommerce")) {
-            throw new IllegalStateException("This is not the Home Page\n" +
-                    "Current page is: " + driver.getCurrentUrl());
-        }
     }
 
     public WebElement getInputName() {

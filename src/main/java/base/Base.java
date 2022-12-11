@@ -20,11 +20,11 @@ public class Base {
 
         if (browserName.equals("firefox")) {
             System.setProperty("webdriver.gecko.driver",
-                    "/c/Cursos/JavaSelFramework/MySeleniumFramework/src/main/resources/drivers/geckodriver.exe");
+                    "C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\main\\resources\\drivers\\geckodriver.exe");
             driver = new FirefoxDriver();
         } else if (browserName.equals("edge")) {
             System.setProperty("webdriver.edge.driver",
-                    "/c/Cursos/JavaSelFramework/MySeleniumFramework/src/main/resources/drivers/msedgedriver.exe");
+                    "C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\main\\resources\\drivers\\msedgedriver.exe");
             driver = new EdgeDriver();
         } else {
             System.out.println(browserName + " is not a valid browser");
@@ -39,7 +39,7 @@ public class Base {
 
     public Properties loadConfig() throws IOException {
         Properties prop = new Properties();
-        FileInputStream fis = new FileInputStream("C:/src/main/resources/config.properties");
+        FileInputStream fis = new FileInputStream("C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\main\\resources\\config.properties");
 
         prop.load(fis);
         return prop;

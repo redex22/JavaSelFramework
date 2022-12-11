@@ -8,6 +8,10 @@
     <artifactId>MySeleniumFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>MySeleniumFramework</name>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
 
     <dependencies>
@@ -33,7 +37,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.6.1</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

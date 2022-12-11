@@ -1,0 +1,20 @@
+00:44:34.967 [main] DEBUG main.java.pages.HomePage - Driver is initialized.
+00:44:36.280 [main] INFO  main.java.pages.HomePage - Driver is closed
+00:45:25.137 [main] DEBUG main.java.pages.HomePage - Driver is initialized.
+00:45:29.462 [main] DEBUG main.java.pages.HomePage - Name sent
+00:45:29.480 [main] DEBUG main.java.pages.HomePage - Email sent
+00:45:29.494 [main] DEBUG main.java.pages.HomePage - Password sent
+00:45:29.715 [main] DEBUG main.java.pages.HomePage - Ice Cream box checked
+00:45:29.746 [main] DEBUG main.java.pages.HomePage - Gender selected
+00:45:29.969 [main] DEBUG main.java.pages.HomePage - Employed button clicked
+00:45:30.211 [main] INFO  main.java.pages.HomePage - Successfully submission
+00:45:30.614 [main] INFO  main.java.pages.HomePage - Driver is closed
+00:47:16.152 [main] DEBUG main.java.pages.HomePage - Driver is initialized.
+00:47:20.122 [main] DEBUG main.java.pages.HomePage - Name sent
+00:47:20.143 [main] DEBUG main.java.pages.HomePage - Email sent
+00:47:20.156 [main] DEBUG main.java.pages.HomePage - Password sent
+00:47:20.385 [main] DEBUG main.java.pages.HomePage - Ice Cream box checked
+00:47:20.417 [main] DEBUG main.java.pages.HomePage - Gender selected
+00:47:20.633 [main] DEBUG main.java.pages.HomePage - Employed button clicked
+00:47:20.874 [main] INFO  main.java.pages.HomePage - Successfully submission
+00:47:21.276 [main] INFO  main.java.pages.HomePage - Driver is closed
