@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckoutPageProcess extends Action {
 
-    WebDriver driver;
     private CheckoutPage checkoutPage;
 
     public CheckoutPageProcess(WebDriver driver){
+        super(driver);
         checkoutPage = new CheckoutPage(driver);
     }
 
@@ -17,9 +17,8 @@ public class CheckoutPageProcess extends Action {
         this.sendData(checkoutPage.getLocationBox(), location);
     }
 
-    public void clickOnUsaCountry(String country){
-        this.verifyByLinkText(country);
-        this.doClick(checkoutPage.getUsaCountry());
+    public void clickOnCountry(String country){
+        this.doClick(checkoutPage.getCountry(country));
     }
 
     public void clickOnConditionsCB(){

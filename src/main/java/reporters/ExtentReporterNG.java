@@ -11,7 +11,7 @@ public class ExtentReporterNG {
     public static ExtentReports extent;
 
     public static ExtentReports getReportObject() {
-        String path = "C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\reports\\report2.html";
+        String path = "C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\reports\\report3.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(path);
         reporter.config().setReportName("Automation Results");
         reporter.config().setDocumentTitle("Test Results");

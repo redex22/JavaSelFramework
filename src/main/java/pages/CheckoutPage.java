@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,11 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class CheckoutPage {
+
+    private WebDriver driver;
+
+
     @FindBy(id = "country")
     private WebElement locationBox;
 
-    @FindBy(linkText = "United States of America")
-    private WebElement usaCountry;
 
     @FindBy(css = "label[for='checkbox2']")
     private WebElement conditionsCheckBox;
@@ -24,14 +27,16 @@ public class CheckoutPage {
 
     public CheckoutPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     public WebElement getLocationBox() {
         return locationBox;
     }
 
-    public WebElement getUsaCountry() {
-        return usaCountry;
+    public WebElement getCountry(String country) {
+        By countryElement = new By.ByLinkText(country);
+        return driver.findElement(countryElement);
     }
 
     public WebElement getConditionsCheckBox() {
@@ -44,5 +49,9 @@ public class CheckoutPage {
 
     public WebElement getFinalAlert() {
         return finalAlert;
+    }
+
+    public WebDriver getDriver() {
+        return this.driver;
     }
 }

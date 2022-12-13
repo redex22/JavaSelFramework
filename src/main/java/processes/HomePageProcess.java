@@ -10,18 +10,19 @@ public class HomePageProcess extends Action {
     private HomePage homePage;
 
     public HomePageProcess(WebDriver driver){
+        super(driver);
         homePage = new HomePage(driver);
     }
 
     public void sendNameKeys(String name){
-        this.sendData(homePage.getInputPassword(), name);
+        this.sendData(homePage.getInputName(), name);
     }
 
     public void sendEmailKeys(String email){
         this.sendData(homePage.getInputEmail(), email);
     }
     public void sendPassKeys(String passw){
-        this.sendData(homePage.getInputName(), passw);
+        this.sendData(homePage.getInputPassword(), passw);
     }
 
     public void clickIceCreamBox(){
@@ -44,9 +45,7 @@ public class HomePageProcess extends Action {
         return this.getText(homePage.getHomeAlert());
     }
 
-    public ShopPageProcess goToShopPage(){
+    public void goToShopPage(){
         this.doClick(homePage.getShopPageButton());
-        ShopPageProcess shopPageProcess = new ShopPageProcess(driver);
-        return shopPageProcess;
     }
 }
