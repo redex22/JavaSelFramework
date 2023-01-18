@@ -27,30 +27,27 @@ public class End2EndTest extends Base {
     public void initialize() throws IOException, FilloException {
         driver = initializeDriver();
         log.info("Driver is initialized.");
-        data = new Utils().getTestData("TC03");
+        data = new Utils().getExcelData("formData", "testDataPath","TCID", "TC03");
         log.info("TC03 data is loaded");
     }
 
     @Test
-    public void endToEnd() {
+    public void endToEnd() throws FilloException, IOException {
         HomePageProcess homePage = new HomePageProcess(driver);
         ShopPageProcess shopPage = new ShopPageProcess(driver);
         CheckoutPageProcess checkoutPage = new CheckoutPageProcess(driver);
+
+        log.info("TC03: End to end of the e-commerce.");
 
         this.navigateTo(prop.getProperty("urlHome"));
 
         log.info("Step 1: Write the name, email and password data in the respective boxes");
         homePage.sendNameKeys(data.get("Name"));
-        log.debug("Name sent");
         homePage.sendEmailKeys(data.get("Email"));
-        log.debug("Email sent");
         homePage.sendPassKeys(data.get("Password"));
-        log.debug("Password sent");
         log.info("Step 2: Select the Ice Cream, Gender and Employed options");
         homePage.clickIceCreamBox();
-        log.debug("Ice Cream box checked");
         homePage.selectInGenderBox(data.get("Gender"));
-        log.debug("Gender selected");
         homePage.clickEmployedButton();
         log.debug("Employed button clicked");
         log.info("Step 3: Submit the form");
@@ -69,7 +66,6 @@ public class End2EndTest extends Base {
         log.info("Step 7: Select a country as location for delivery");
         checkoutPage.sendLocationKeys(data.get("SearchCountry"));
         checkoutPage.clickOnCountry(data.get("Country"));
-        log.debug("Country sent and selected");
         log.info("Step 8: Accept the conditions and terms. And buy the item.");
         checkoutPage.clickOnConditionsCB();
         checkoutPage.clickOnPurchase();

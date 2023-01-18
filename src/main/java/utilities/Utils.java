@@ -18,6 +18,13 @@ import org.apache.commons.io.FileUtils;
 
 public class Utils extends Base {
 
+    private Fillo fillo;
+    private Connection conn;
+
+    public Utils(){
+        fillo = new Fillo();
+    }
+
     public String getScreenshotPath(String testCaseName, WebDriver driver) throws IOException {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
@@ -27,27 +34,35 @@ public class Utils extends Base {
         return destination;
     }
 
-    public HashMap<String, String> getTestData(String tcid) throws FilloException, IOException {
+    public HashMap<String, String> getExcelData(String sheetName, String dataPath, String idColumn,
+                                                String id) throws FilloException, IOException {
 
         HashMap<String, String> data = new HashMap<String, String>();
-        String testDataFilePath = loadConfig().getProperty("testDataPath");
+        String testDataFilePath = loadConfig().getProperty(dataPath);
 
-        Fillo fillo = new Fillo();
-        Connection connection = fillo.getConnection(testDataFilePath);
-        String strQuery = "Select * from formData where TCID='" + tcid + "'";
-        Recordset recordset = connection.executeQuery(strQuery);
-
-        while (recordset.next()) {
-            ArrayList<String> columnNames = recordset.getFieldNames();
-            for (String name : columnNames) {
-                data.put(name, recordset.getField(name));
-            }
+        conn = fillo.getConnection(testDataFilePath);
+        //String strQuery = "Select * from formData where TCID='" + id + "'";
+        String strQuery = "Select * from " + sheetName;
+        if (!idColumn.isEmpty()){
+            strQuery = strQuery + " where " + idColumn + " = '" + id + "'";
         }
+        Recordset recordset = conn.executeQuery(strQuery);
+
+        excelDataToHashMap(recordset, data);
 
         recordset.close();
-        connection.close();
+        conn.close();
 
         return data;
+    }
 
+
+    private void excelDataToHashMap(Recordset rs, HashMap hm) throws FilloException {
+        while (rs.next()) {
+            ArrayList<String> columnNames = rs.getFieldNames();
+            for (String name : columnNames) {
+                hm.put(name, rs.getField(name));
+            }
+        }
     }
 }

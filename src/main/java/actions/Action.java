@@ -1,5 +1,6 @@
 package actions;
 
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -29,5 +30,22 @@ public abstract class Action {
 
     public String getText(WebElement element){
         return element.getText();
+    }
+
+    public void executeAction(WebElement locator, String action, String value){
+        switch(action){
+            case "click":
+                doClick(locator);
+                break;
+            case "sendData":
+                sendData(locator, value);
+                break;
+            case "selectInABox":
+                selectInABox(locator, value);
+                break;
+            case "getText":
+                getText(locator);
+                break;
+        }
     }
 }

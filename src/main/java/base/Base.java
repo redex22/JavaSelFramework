@@ -38,7 +38,7 @@ public class Base {
     }
 
     public Properties loadConfig() throws IOException {
-        Properties prop = new Properties();
+         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream("C:\\Cursos\\JavaSelFramework\\MySeleniumFramework\\src\\main\\resources\\config.properties");
 
         prop.load(fis);

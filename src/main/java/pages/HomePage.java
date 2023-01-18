@@ -1,84 +1,81 @@
 package pages;
 
+import com.codoid.products.exception.FilloException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.IOException;
 
 // page_url = https://www.rahulshettyacademy.com/angularpractice/
 
-public class HomePage{
+public class HomePage extends AbstractLocatorPage{
 
     /*
      * Page Object encapsulates the pages.HomePage page.
      */
+    private WebDriver driver;
 
-    protected WebDriver driver;
+    private final String sheetName = "homeLocators";
+    private final String dataPath = "locatorsPath";
+    private final String idColumn = "id";
+    private final String inputName = "inputName";
+    private final String inputPassword = "inputPassword";
+    private final String iceCreamCB = "iceCreamCB";
+    private final String genderBox = "genderBox";
+    private final String employedButton = "employedButton";
+    private final String submitButton = "submitButton";
+    private final String homeAlert = "homeAlert";
+    private final String shopPageButton = "shopPageButton";
+    private final String inputEmail = "inputEmail";
 
-    @FindBy(name = "name")
-    private WebElement inputName;
-
-    @FindBy(id = "exampleInputPassword1")
-    private WebElement inputPassword;
-
-    @FindBy(xpath = "//label[normalize-space()='Check me out if you Love IceCreams!']")
-    private WebElement iceCreamCB;
-
-    @FindBy(css = "#exampleFormControlSelect1")
-    private WebElement genderBox;
-
-    @FindBy(css = "#inlineRadio2")
-    private WebElement employedButton;
-
-    @FindBy(xpath = "//input[@value='Submit']")
-    private WebElement submitButton;
-
-    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
-    private WebElement homeAlert;
-
-    @FindBy(xpath = "//a[normalize-space()='Shop']")
-    private WebElement shopPageButton;
-
-    @FindBy(name = "email")
-    private WebElement inputEmail;
-
-    public HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) throws FilloException, IOException {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    public WebElement getInputName() {
-        return inputName;
+    public WebElement getInputName() throws FilloException, IOException {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, inputName)));
     }
 
-    public WebElement getInputPassword() {
-        return inputPassword;
+    public WebElement getInputPassword() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, inputPassword)));
     }
 
-    public WebElement getIceCreamCB() {
-        return iceCreamCB;
+    public WebElement getIceCreamCB() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, iceCreamCB)));
     }
 
-    public WebElement getGenderBox() {
-        return genderBox;
+    public WebElement getGenderBox() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, genderBox)));
     }
 
-    public WebElement getEmployedButton() {
-        return employedButton;
+    public WebElement getEmployedButton() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, employedButton)));
     }
 
-    public WebElement getSubmitButton() {
-        return submitButton;
+    public WebElement getSubmitButton() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, submitButton)));
     }
 
-    public WebElement getHomeAlert() {
-        return homeAlert;
+    public WebElement getHomeAlert() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, homeAlert)));
     }
 
-    public WebElement getShopPageButton() {
-        return shopPageButton;
+    public WebElement getShopPageButton() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, shopPageButton)));
     }
 
-    public WebElement getInputEmail() {
-        return inputEmail;
+    public WebElement getInputEmail() throws FilloException, IOException  {
+        return driver.findElement(findLocator(getExcelData(sheetName,
+                dataPath, idColumn, inputEmail)));
     }
 }

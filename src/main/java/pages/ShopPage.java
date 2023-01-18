@@ -31,7 +31,6 @@ public class ShopPage {
     }
 
     public List<WebElement> getCardBoxes() {
-        //List<WebElement> cardBoxes = driver.findElements(By.xpath("//div[@class='card h-100']"));
         return cardBoxes;
     }
 

@@ -14,4 +14,9 @@
             <class name="cases.End2EndTest" />
         </classes>
     </test>
+    <test name="ShoppingTest">
+        <classes>
+            <class name="cases.ShoppingTest" />
+        </classes>
+    </test>
 </suite>
